@@ -39,7 +39,7 @@ PS C:\> Set-ABRConnection -APIKey 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -Region
 
 At this point you should be able to use any of the available functions to interact with the API.
 
-### Auditlog
+### Auditlog (WIP)
 
 ```powershell
 PS C:\> # Get a list with audit logs
@@ -50,6 +50,14 @@ installs        uninstalls      elevatedApplications scanResults id
 {}              {@{applicati... {@{name=Microsoft... {}          123456
 {@{applicati... {}              {@{name=Microsoft... {}          123457
 {}              {}              {@{name=Microsoft... {}          123458
+...
+```
+
+### Events (WIP)
+```powershell
+PS C:\> # Get a list with audit logs
+PS C:\> Get-ABREvent | Format-Table
+
 ...
 ```
 
@@ -101,7 +109,6 @@ PS C:\> Request-ABRPinCodeForUninstall -Id 123456
 PS C:\> # Request an elevation PIN for a specific device by using the ComputerName
 PS C:\> Request-ABRPinCodeForElevation -ComputerName Computer1 -Pin1 000000
 9876543210
-...
 ```
 
 ## ToDo
