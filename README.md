@@ -59,6 +59,15 @@ PS C:\> # Get a list with audit logs
 PS C:\> Get-ABREvent | Format-Table
 
 ...
+
+PS C:\> # Get a list with all event codes and their text values
+PS C:\> Get-ABREventCode | Format-Table
+
+EventCode EventText
+--------- ---------
+1         User added to local admins group
+2         User downgraded from administrator to user
+...
 ```
 
 ### Inventory
