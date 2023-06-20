@@ -1,5 +1,7 @@
 # Admin by Request
 
+![Admin by Request dashboard](https://www.adminbyrequest.com/wp-content/uploads/2023/01/1-1024x673.png)
+
 ## Introduction
 
 This repository contains a full Windows PowerShell/Powershell Core module with functions that help you interact with the Admin by Request APIs.
