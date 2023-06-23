@@ -1,15 +1,18 @@
 <#
     .SYNOPSIS
-      Retrieve a list of approval requests
+      Retrieve a list of events
 
     .DESCRIPTION
-      Retrieve a list of all approval requests with information like status, application, user, computer, ...
+      Retrieve a list of all events with information like event code, event text, user, computer, ...
 
     .PARAMETER Id
-      Returns one request
+      Returns one event
 
-    .PARAMETER Status
-      Only get request of a certain type (possible values: Pending, Denied, Approved, Quarantined)
+    .PARAMETER ComputerName
+      Returns an array of events for a certain computer
+
+    .PARAMETER UserName
+      Returns an array of events for a certain user (user account or full name)
 
     .PARAMETER StartId
       The starting ID you wish to receive. Can be used for incremental offload of data to your own system
@@ -18,31 +21,40 @@
       Maximum number of resources to return. Default is 50 to preserve bandwidth, maximum is 10000. For queries with more than 10000 records, pagination is mandatory
 
     .PARAMETER Last
-      Entries are retrieved in ascending order. Last returns the latest X number of entries in descending order. Maximum is 10000. Take and StartId cannot be combined with Last
+      Entries are retrieved in ascending order by default. Last returns the latest X number of entries in descending order. Maximum is 10000
 
-    .PARAMETER WantScanDetails
-      Use this filter, if you wish to receive detailed lists of scan results. The default is to give you the overall result only
+    .PARAMETER Code
+      Only return entries with a certain event code; see Get-ABREventCode for a list
 
-    .EXAMPLE
-      PS C:\> Get-ABRRequest
-      Get all requests
+    .PARAMETER Days
+      By default, entries up to 30 days are returned, unless specied otherwise. If startdate is specified, days is not used
 
-    .EXAMPLE
-      PS C:\> Get-ABRRequest -Id 1234567
-      Get the request with the Id 1234567
+    .PARAMETER StartDate
+      Only return entries after the specified start date
 
-    .EXAMPLE
-      PS C:\> Get-ABRRequest -Status Denied -Last 5
-      Get the last 5 requests that were denied
+    .PARAMETER EndDate
+      Only return entries before and including the specified end date
 
     .EXAMPLE
-      PS C:\> Get-ABRRequest -Status Denied -WantScanDetails
-      Get all the requests that were denied with scan details
+      PS C:\> Get-ABREvent
+      Get all events (either from the last 30 days or 50 results)
+
+    .EXAMPLE
+      PS C:\> Get-ABREvent -Id 1234567
+      Get the event with the Id 1234567
+
+    .EXAMPLE
+      PS C:\> Get-ABREvent -ComputerName 'Computer1' -Last 10
+      Get the last 10 events from Computer1
+
+    .EXAMPLE
+      PS C:\> Get-ABREvent -UserName 'Doe John' -StartDate '2023-01-01'
+      Get all the events for user 'Doe John' starting from 2023-01-01
 
 #>
 Function Get-ABREvent
 {
-  [CmdletBinding(DefaultParameterSetName = 'Id')]
+  [CmdletBinding(DefaultParameterSetName = 'All')]
   Param
   (
     [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Id', Position = 0)]
@@ -50,34 +62,71 @@ Function Get-ABREvent
     [int]
     $Id,
 
-    [Parameter(ValueFromPipelineByPropertyName = $True, ParameterSetName = 'Filter')]
-    [ValidateSet('Approved', 'Denied', 'Pending', 'Quarantined')]
+    [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Computer', Position = 0)]
+    [ValidateNotNullOrEmpty()]
     [string]
-    $Status,
+    $ComputerName,
 
-    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Filter')]
+    [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'User', Position = 0)]
+    [ValidateNotNullOrEmpty()]
+    [string]
+    $UserName,
+
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'All')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Computer')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'User')]
     [ValidateNotNullOrEmpty()]
     [int]
     $StartId,
 
-    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Filter')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'All')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Computer')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'User')]
     [Alias('Limit')]
     [ValidateRange(1, 10000)]
     [int]
     $Take,
 
-    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Filter')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'All')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Computer')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'User')]
     [ValidateRange(1, 10000)]
     [int]
     $Last,
 
-    [switch]
-    $WantScanDetails
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'All')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Computer')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'User')]
+    [Alias('EventCode')]
+    [ValidateRange(1, 150)]
+    [int]
+    $Code,
+
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'All')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Computer')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'User')]
+    [ValidateRange(1, 10000)]
+    [int]
+    $Days,
+
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'All')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Computer')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'User')]
+    [ValidateNotNullOrEmpty()]
+    [datetime]
+    $StartDate,
+
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'All')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Computer')]
+    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'User')]
+    [ValidateNotNullOrEmpty()]
+    [datetime]
+    $EndDate
   )
 
   Process
   {
-    $URL = '/auditlog'
+    $URL = '/events'
     $Headers = @{}
 
     Switch ($PSCmdlet.ParameterSetName)
@@ -88,22 +137,58 @@ Function Get-ABREvent
         {
           $URL += '/{0}' -f $Id
         }
+        Break
       }
 
-      'Filter'
+      'Computer'
       {
-        @('Status', 'StartId', 'Take', 'Last') | ForEach-Object {
-          If ($PSBoundParameters.($_) -ne 0 -and -not [string]::IsNullOrEmpty($PSBoundParameters.($_)))
-          {
-            $Headers.Add($_.ToLower(), $PSBoundParameters.($_))
-          }
-        }
+        $URL = '/computers/{0}/events' -f ([System.Uri]::EscapeUriString($ComputerName))
+        Break
+      }
+
+      'User'
+      {
+        $URL = '/users/{0}/events' -f ([System.Uri]::EscapeUriString($UserName))
+        Break
       }
     }
 
-    If ($WantScanDetails.IsPresent)
+    If ($PSCmdlet.ParameterSetName -ne 'Id')
     {
-      $Headers.Add('wantscandetails', 1)
+      If ($PSBoundParameters.ContainsKey('StartId'))
+      {
+        $Headers.Add('startid', $StartId)
+      }
+
+      If ($PSBoundParameters.ContainsKey('Take'))
+      {
+        $Headers.Add('take', $Take)
+      }
+
+      If ($PSBoundParameters.ContainsKey('Last'))
+      {
+        $Headers.Add('last', $Last)
+      }
+
+      If ($PSBoundParameters.ContainsKey('Code'))
+      {
+        $Headers.Add('code', $Code)
+      }
+
+      If ($PSBoundParameters.ContainsKey('Days'))
+      {
+        $Headers.Add('days', $Days)
+      }
+
+      If ($PSBoundParameters.ContainsKey('StartDate'))
+      {
+        $Headers.Add('startdate', $StartDate.ToString('yyyy-MM-dd'))
+      }
+
+      If ($PSBoundParameters.ContainsKey('EndDate'))
+      {
+        $Headers.Add('enddate', $EndDate.ToString('yyyy-MM-dd'))
+      }
     }
 
     $InvokeABRRequest_Splat = @{
