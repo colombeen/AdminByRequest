@@ -1,6 +1,6 @@
 # Admin by Request
 
-![Admin by Request dashboard](https://www.adminbyrequest.com/wp-content/uploads/2023/01/1-1024x673.png)
+![Admin by Request PowerShell module](/Images/AdminByRequestPowershellHeader.png)
 
 ## Introduction
 
