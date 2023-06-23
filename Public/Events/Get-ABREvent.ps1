@@ -57,7 +57,7 @@ Function Get-ABREvent
   [CmdletBinding(DefaultParameterSetName = 'All')]
   Param
   (
-    [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Id', Position = 0)]
+    [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Id', Position = 0)]
     [ValidateNotNullOrEmpty()]
     [int]
     $Id,
