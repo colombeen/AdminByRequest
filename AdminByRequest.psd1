@@ -100,7 +100,7 @@
       ProjectUri = 'https://github.com/colombeen/AdminByRequest'
 
       # A URL to an icon representing this module.
-      # IconUri = ''
+      IconUri    = 'https://github.com/colombeen/AdminByRequest/blob/main/Images/AdminByRequestPowershell.png?raw=true'
 
       # ReleaseNotes of this module
       # ReleaseNotes = ''
