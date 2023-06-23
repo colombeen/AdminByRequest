@@ -1,4 +1,4 @@
-# Admin by Request
+# Admin By Request PowerShell module
 
 ![Admin by Request PowerShell module](/Images/AdminByRequestPowershellHeader.png)
 
