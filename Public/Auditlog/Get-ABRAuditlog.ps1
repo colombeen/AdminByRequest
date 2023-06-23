@@ -89,7 +89,7 @@ Function Get-ABRAuditlog
 
     [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Delta', Position = 0)]
     [ValidateNotNullOrEmpty()]
-    [int]
+    [switch]
     $Delta,
 
     [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = 'All')]
