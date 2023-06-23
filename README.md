@@ -1,5 +1,7 @@
 # Admin by Request
 
+![Admin by Request dashboard](https://www.adminbyrequest.com/wp-content/uploads/2023/01/1-1024x673.png)
+
 ## Introduction
 
 This repository contains a full Windows PowerShell/Powershell Core module with functions that help you interact with the Admin by Request APIs.
@@ -58,6 +60,15 @@ installs        uninstalls      elevatedApplications scanResults id
 PS C:\> # Get a list with audit logs
 PS C:\> Get-ABREvent | Format-Table
 
+...
+
+PS C:\> # Get a list with all event codes and their text values
+PS C:\> Get-ABREventCode | Format-Table
+
+EventCode EventText
+--------- ---------
+1         User added to local admins group
+2         User downgraded from administrator to user
 ...
 ```
 
