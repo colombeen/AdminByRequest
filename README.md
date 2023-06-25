@@ -11,12 +11,15 @@ API information can be found on https://www.adminbyrequest.com/docs/api-overview
 
 | Requirement        | Version |
 | ------------------ | ------- |
-| Windows PowerShell | 3.0+    |
+| Windows PowerShell | 5.1+    |
 | PowerShell Core    | 6.0+    |
 
 ## Installation
 
-The module **isn't available on powershellgallery.com yet** so you are required to download a copy of the module from here and either place it in one of the default module locations to be able to autoload the module or save it anywhere on your system and import the module by using the full path to the module file.
+```powershell
+PS C:\> # Install the module
+PS C:\> Install-Module -Name 'AdminByRequest'
+```
 
 ## How to use
 
@@ -41,7 +44,7 @@ PS C:\> Set-ABRConnection -APIKey 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -Region
 
 At this point you should be able to use any of the available functions to interact with the API.
 
-### Auditlog (WIP)
+### Auditlog
 
 ```powershell
 PS C:\> # Get a list with audit logs
@@ -55,11 +58,17 @@ installs        uninstalls      elevatedApplications scanResults id
 ...
 ```
 
-### Events (WIP)
+### Events
+
 ```powershell
-PS C:\> # Get a list with audit logs
+PS C:\> # Get a list with events
 PS C:\> Get-ABREvent | Format-Table
 
+      id eventCode eventLevel eventText                              eventTime
+      -- --------- ---------- ---------                              ---------
+12345678         6          1 Unaudited administrator logged on      2023-01-...
+12345679        40          0 Admin By Request Workstation installed 2023-02-...
+12345680         5          0 Audited administrator logged on        2023-03-...
 ...
 
 PS C:\> # Get a list with all event codes and their text values
@@ -125,6 +134,6 @@ PS C:\> Request-ABRPinCodeForElevation -ComputerName Computer1 -Pin1 000000
 ## ToDo
 
 - This module has only just been created and could contain alot of bugs, so create an issue if you have any problems.
-- I'm still questionning if the connection info should be stored on the local computer or not so that you don't need to set it up everytime you load the module. If I do change my mind and add support to store the config locally, I'll at least add some type of encryption to increase the security a little bit.
-- I still need to create Pester tests. I've tried to add pipeline support to the best of my knowledge but I haven't tested everything yet...
-- I still have to create/complete 2 functions to cover every possible API function. These updates will come soon.
+- Write functions to store config locally.
+- I still need to create Pester tests.
+- I've tried to add pipeline support to the best of my knowledge but I haven't tested everything yet...
