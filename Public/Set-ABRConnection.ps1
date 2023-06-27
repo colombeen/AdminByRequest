@@ -51,11 +51,13 @@ Function Set-ABRConnection
       'US'
       {
         $URL = 'https://dc2api.adminbyrequest.com'
+        Break
       }
 
       'EU'
       {
         $URL = 'https://dc1api.adminbyrequest.com'
+        Break
       }
 
       Default

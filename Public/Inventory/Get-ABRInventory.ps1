@@ -86,24 +86,27 @@ Function Get-ABRInventory
         {
           $URL += '/{0}' -f $Id
         }
-        break
+        Break
       }
 
       'Computer'
       {
-        $URL += '/{0}' -f $ComputerName
-        break
+        $URL += '/{0}' -f ([System.Uri]::EscapeUriString($ComputerName))
+        Break
       }
 
       'Filter'
       {
-        @('StartId', 'Take') | ForEach-Object {
-          If ($PSBoundParameters.($_) -ne 0 -and -not [string]::IsNullOrEmpty($PSBoundParameters.($_)))
-          {
-            $Headers.Add($_.ToLower(), $PSBoundParameters.($_))
-          }
+        If ($PSBoundParameters.ContainsKey('StartId'))
+        {
+          $Headers.Add('startid', $StartId)
         }
-        break
+
+        If ($PSBoundParameters.ContainsKey('Take'))
+        {
+          $Headers.Add('take', $Take)
+        }
+        Break
       }
     }
 

@@ -114,6 +114,7 @@ Function Get-ABREventCode
           $Code = $_
           $Events | Where-Object { $_.EventCode -like $Code }
         }
+        Break
       }
 
       'EventText'
@@ -122,6 +123,7 @@ Function Get-ABREventCode
           $Text = $_
           $Events | Where-Object { $_.EventText -like $Text }
         }
+        Break
       }
     }
   }

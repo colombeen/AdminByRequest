@@ -62,7 +62,7 @@ Function Deny-ABRRequest
       $Headers.Add('deniedby', $DeniedBy)
     }
 
-    If (-not [string]::IsNullOrEmpty($Reason))
+    If ($PSBoundParameters.ContainsKey('Reason'))
     {
       $Headers.Add('reason', $Reason)
     }

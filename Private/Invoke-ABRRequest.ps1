@@ -38,11 +38,12 @@ Function Invoke-ABRRequest
     [Parameter(ValueFromPipelineByPropertyName = $true, Position = 2)]
     [ValidateNotNullOrEmpty()]
     [object]
-    $Body = $null,
+    $Body,
 
     [Parameter(ValueFromPipelineByPropertyName = $true, Position = 3)]
+    [ValidateNotNullOrEmpty()]
     [hashtable]
-    $Headers = $null
+    $Headers
   )
 
   Process
@@ -53,7 +54,7 @@ Function Invoke-ABRRequest
       Throw 'Missing connection information. You need to setup the connection settings first by using Set-ABRConnection function.'
     }
 
-    If ($null -ne $Headers)
+    If ($PSBoundParameters.ContainsKey('Headers'))
     {
       If (-not $Headers.ContainsKey('apikey'))
       {
@@ -82,7 +83,7 @@ Function Invoke-ABRRequest
     #endregion
 
     #region Body check
-    If ($null -ne $Body)
+    If ($PSBoundParameters.ContainsKey('Body'))
     {
       $ABR_InvokeRestMethod_Splat.Add('Body', $Body)
     }

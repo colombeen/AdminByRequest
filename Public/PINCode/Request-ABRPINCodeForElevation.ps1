@@ -61,13 +61,13 @@ Function Request-ABRPinCodeForElevation
         {
           $URL += '/{0}/pin' -f $Id
         }
-        break
+        Break
       }
 
       'Computer'
       {
-        $URL += '/{0}/pin' -f $ComputerName
-        break
+        $URL += '/{0}/pin' -f ([System.Uri]::EscapeUriString($ComputerName))
+        Break
       }
     }
 

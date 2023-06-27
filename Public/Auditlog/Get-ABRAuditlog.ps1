@@ -88,7 +88,6 @@ Function Get-ABRAuditlog
     $UserName,
 
     [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'Delta', Position = 0)]
-    [ValidateNotNullOrEmpty()]
     [switch]
     $Delta,
 
@@ -192,7 +191,7 @@ Function Get-ABRAuditlog
 
       'Delta'
       {
-        $URL += '/delta' 
+        $URL += '/delta'
         Break
       }
     }

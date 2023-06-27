@@ -88,18 +88,30 @@ Function Get-ABRRequest
         {
           $URL += '/{0}' -f $Id
         }
-        break
+        Break
       }
 
       'Filter'
       {
-        @('Status', 'StartId', 'Take', 'Last') | ForEach-Object {
-          If ($PSBoundParameters.($_) -ne 0 -and -not [string]::IsNullOrEmpty($PSBoundParameters.($_)))
-          {
-            $Headers.Add($_.ToLower(), $PSBoundParameters.($_))
-          }
+        If ($PSBoundParameters.ContainsKey('Status'))
+        {
+          $Headers.Add('status', $status.toLower())
         }
-        break
+        If ($PSBoundParameters.ContainsKey('StartId'))
+        {
+          $Headers.Add('startid', $StartId)
+        }
+
+        If ($PSBoundParameters.ContainsKey('Take'))
+        {
+          $Headers.Add('take', $Take)
+        }
+
+        If ($PSBoundParameters.ContainsKey('Last'))
+        {
+          $Headers.Add('last', $Last)
+        }
+        Break
       }
     }
 
