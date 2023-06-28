@@ -16,6 +16,8 @@ API information can be found on https://www.adminbyrequest.com/docs/api-overview
 
 ## Installation
 
+The module is available on the [PowerShell gallery](https://www.powershellgallery.com/packages/AdminByRequest).
+
 ```powershell
 PS C:\> # Install the module
 PS C:\> Install-Module -Name 'AdminByRequest'
