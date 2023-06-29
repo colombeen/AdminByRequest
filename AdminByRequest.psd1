@@ -7,28 +7,28 @@
 #
 @{
   # Script module or binary module file associated with this manifest.
-  RootModule        = 'AdminByRequest.psm1'
+  RootModule           = 'AdminByRequest.psm1'
 
   # Version number of this module.
-  ModuleVersion     = '1.0.2'
+  ModuleVersion        = '1.0.2'
 
   # Supported PSEditions
-  # CompatiblePSEditions = @()
+  CompatiblePSEditions = @('Desktop', 'Core')
 
   # ID used to uniquely identify this module
-  GUID              = 'ce916876-0c0d-4484-b2cd-8ffc6d9a43b4'
+  GUID                 = 'ce916876-0c0d-4484-b2cd-8ffc6d9a43b4'
 
   # Author of this module
-  Author            = 'Jarno Colombeen'
+  Author               = 'Jarno Colombeen'
 
   # Company or vendor of this module
   # CompanyName = ''
 
   # Copyright statement for this module
-  Copyright         = '(c) 2023 - Jarno Colombeen.'
+  Copyright            = '(c) 2023 - Jarno Colombeen.'
 
   # Description of the functionality provided by this module
-  Description       = 'Module to interact with the Admin by Request API'
+  Description          = 'Module to interact with the Admin by Request APIs'
 
   # Minimum version of the Windows PowerShell engine required by this module
   # PowerShellVersion = ''
@@ -67,7 +67,7 @@
   # NestedModules = @()
 
   # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-  FunctionsToExport = @(
+  FunctionsToExport    = @(
     # Config
     'Set-ABRConnection',
     # Auditlog
@@ -79,17 +79,17 @@
     # PINCode
     'Request-ABRPINCodeForElevation', 'Request-ABRPINCodeForUninstall',
     # Requests
-    'Approve-ABRRequest', 'Get-ABRRequest', 'Deny-ABRRequest'
+    'Approve-ABRRequest', 'Deny-ABRRequest', 'Get-ABRRequest'
   )
 
   # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-  CmdletsToExport   = '*'
+  CmdletsToExport      = '*'
 
   # Variables to export from this module
-  VariablesToExport = '*'
+  VariablesToExport    = '*'
 
   # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-  AliasesToExport   = '*'
+  AliasesToExport      = '*'
 
   # DSC resources to export from this module
   # DscResourcesToExport = @()
@@ -101,13 +101,13 @@
   # FileList = @()
 
   # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-  PrivateData       = @{
+  PrivateData          = @{
     PSData = @{
       # Tags applied to this module. These help with module discovery in online galleries.
-      Tags       = @('AdminByRequest', 'ABR')
+      Tags       = @('ABR', 'AdminByRequest', 'Admin By Request', 'FastTrack Software')
 
       # A URL to the license for this module.
-      # LicenseUri = ''
+      LicenseUri = 'https://github.com/colombeen/AdminByRequest/blob/main/LICENSE?raw=true'
 
       # A URL to the main website for this project.
       ProjectUri = 'https://github.com/colombeen/AdminByRequest'
