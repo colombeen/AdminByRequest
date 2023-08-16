@@ -133,6 +133,22 @@ PS C:\> Request-ABRPinCodeForElevation -ComputerName Computer1 -Pin1 000000
 9876543210
 ```
 
+### Who Am I
+
+```powershell
+PS C:\> # Get a list with information on the current tenant
+PS C:\> Get-ABRWhoAmI
+
+tenantName            : Company
+apiUrl                : https://dc1api.adminbyrequest.com
+workstationSeats      : 987
+workstationUsage      : 123
+workstationExpiryDate : 2025-01-01T00:00:00
+serverSeats           : 654
+serverUsage           : 456
+serverExpiryDate      : 2025-01-01T00:00:00
+```
+
 ## ToDo
 
 - This module has only just been created and could contain alot of bugs, so create an issue if you have any problems.

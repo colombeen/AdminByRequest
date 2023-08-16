@@ -31,7 +31,7 @@
   Description          = 'Module to interact with the Admin by Request APIs'
 
   # Minimum version of the Windows PowerShell engine required by this module
-  # PowerShellVersion = ''
+  PowerShellVersion    = '5.1'
 
   # Name of the Windows PowerShell host required by this module
   # PowerShellHostName = ''
@@ -106,7 +106,7 @@
   PrivateData          = @{
     PSData = @{
       # Tags applied to this module. These help with module discovery in online galleries.
-      Tags       = @('ABR', 'AdminByRequest', 'Admin By Request', 'FastTrack Software')
+      Tags       = @('ABR', 'AdminByRequest', 'FastTrack', 'Software')
 
       # A URL to the license for this module.
       LicenseUri = 'https://github.com/colombeen/AdminByRequest/blob/main/LICENSE?raw=true'
