@@ -37,11 +37,11 @@ The first thing that is needed at this point is setting up the connection inform
 - APIKey
 - Region
 
-You are able add the **MailUser** param if you want the audit logs to reflect which user has approved/denied a request.
+You are able add the **UserMail** param if you want the audit logs to reflect which user has approved/denied a request.
 
 ```powershell
 PS C:\> # Setup the connection information
-PS C:\> Set-ABRConnection -APIKey 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -Region 'EU' -MailUser 'john.doe@company.tld'
+PS C:\> Set-ABRConnection -APIKey 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -Region 'EU' -UserMail 'john.doe@company.tld'
 ```
 
 At this point you should be able to use any of the available functions to interact with the API.
