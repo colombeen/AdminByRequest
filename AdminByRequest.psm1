@@ -30,5 +30,12 @@ Foreach ($Folder in @('Private', 'Public'))
 #region Init default config
 Assert-ABRConfig
 
-Get-ABRConfig | Where-Object { $_.Default -eq $true } | Set-ABRConnection
+Try
+{
+  Select-ABRConfig
+}
+Catch
+{
+  Write-Verbose $_
+}
 #endregion
