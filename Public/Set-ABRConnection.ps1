@@ -37,7 +37,8 @@ Function Set-ABRConnection
     $Region,
 
     [Parameter(ValueFromPipelineByPropertyName = $true, Position = 2)]
-    [ValidateNotNullOrEmpty()]
+    [AllowNull()]
+    [AllowEmptyString()]
     [string]
     $UserMail = $null
   )
