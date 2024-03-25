@@ -10,7 +10,7 @@
   RootModule           = 'AdminByRequest.psm1'
 
   # Version number of this module.
-  ModuleVersion        = '1.1.0'
+  ModuleVersion        = '1.2.0'
 
   # Supported PSEditions
   CompatiblePSEditions = @('Desktop', 'Core')
@@ -69,7 +69,7 @@
   # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
   FunctionsToExport    = @(
     # Config
-    'Set-ABRConnection',
+    'Add-ABRConfig', 'Get-ABRConfig', 'Remove-ABRConfig', 'Select-ABRConfig', 'Set-ABRConfig', 'Set-ABRConnection',
     # Auditlog
     'Get-ABRAuditlog',
     # Events

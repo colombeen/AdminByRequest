@@ -51,7 +51,7 @@ Function Invoke-ABRRequest
     #region Connection Requirements
     If ($null -eq $Script:ABR_API_URL)
     {
-      Throw 'Missing connection information. You need to setup the connection settings first by using Set-ABRConnection function.'
+      Throw 'Missing connection information. You need to setup the connection settings first by using the Set-ABRConnection function or store the connection information by using the Add-ABRConfig function.'
     }
 
     If ($PSBoundParameters.ContainsKey('Headers'))
