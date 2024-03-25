@@ -1,3 +1,13 @@
+<#
+    .SYNOPSIS
+      Assert the ABR config file
+
+    .DESCRIPTION
+      Assert the config file for Admin by Request
+
+    .EXAMPLE
+      PS C:\> Assert-ABRConfig
+#>
 Function Assert-ABRConfig
 {
   Process

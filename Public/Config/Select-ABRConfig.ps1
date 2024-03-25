@@ -1,3 +1,21 @@
+<#
+    .SYNOPSIS
+      Select which connection information to load from the ABR config
+
+    .DESCRIPTION
+      Select which connection information to load from the config file for Admin by Request
+
+    .PARAMETER Name
+      The name of the config information
+
+    .EXAMPLE
+      PS C:\> Select-ABRConfig
+      Get the default connection information from the Admin by Request config file and load it
+
+    .EXAMPLE
+      PS C:\> Select-ABRConfig -name 'Company 2'
+      Get the connection information with the name 'Company 2' from the Admin by Request config file and load it
+#>
 Function Select-ABRConfig
 {
   [CmdletBinding(DefaultParameterSetName = 'Default')]
