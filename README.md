@@ -151,7 +151,5 @@ serverExpiryDate      : 2025-01-01T00:00:00
 
 ## ToDo
 
-- This module has only just been created and could contain alot of bugs, so create an issue if you have any problems.
-- Write functions to store config locally.
 - I still need to create Pester tests.
 - I've tried to add pipeline support to the best of my knowledge but I haven't tested everything yet...
