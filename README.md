@@ -1,5 +1,11 @@
 # Admin By Request PowerShell module
 
+[![GitHub Release](https://img.shields.io/github/v/release/colombeen/adminbyrequest)](https://github.com/colombeen/AdminByRequest/releases/latest)
+[![PowershellGallery](https://img.shields.io/powershellgallery/v/adminbyrequest.svg)](https://www.powershellgallery.com/packages/adminbyrequest)
+[![GalleryVersion](https://img.shields.io/powershellgallery/dt/adminbyrequest.svg)](https://www.powershellgallery.com/packages/passwordstate-management)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/colombeen/adminbyrequest/main)
+![GitHub License](https://img.shields.io/github/license/colombeen/adminbyrequest)
+
 ![Admin by Request PowerShell module](/Images/AdminByRequestPowershellHeader.png)
 
 ## Introduction
