@@ -1,9 +1,9 @@
-<#
+﻿<#
     .SYNOPSIS
       Retrieve a list of inventory computers
 
     .DESCRIPTION
-      Retrieve a list of inventory computers with computer/user/operating system/hardware/network/location/software information 
+      Retrieve a list of inventory computers with computer/user/operating system/hardware/network/location/software information
 
     .PARAMETER Id
       Returns one computer’s inventory by id

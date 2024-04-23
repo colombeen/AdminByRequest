@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Get a list with event codes and text
 

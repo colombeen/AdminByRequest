@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Request a PIN code for admin elevation
 

@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Request an uninstall PIN code
 

@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Get connection information from the ABR config
 

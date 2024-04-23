@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Add connection information to the ABR config
 
@@ -30,6 +30,7 @@
 #>
 Function Add-ABRConfig
 {
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingConvertToSecureStringWithPlainText', '')]
   [CmdletBinding(ConfirmImpact = 'Low', SupportsShouldProcess = $true)]
   Param
   (

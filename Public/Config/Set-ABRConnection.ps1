@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Define connection information
 
@@ -66,7 +66,7 @@ Function Set-ABRConnection
         Throw ('The region {0} isn''t defined' -f $_)
       }
     }
-    
+
     $Script:ABR_API_Key = $APIKey
     $Script:ABR_API_URL = $URL
     $Script:ABR_API_User = $UserMail

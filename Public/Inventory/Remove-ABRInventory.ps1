@@ -1,9 +1,9 @@
-<#
+﻿<#
     .SYNOPSIS
       Remove a computer from the inventory
 
     .DESCRIPTION
-      Remove a computer from the inventory by id or computer name 
+      Remove a computer from the inventory by id or computer name
 
     .PARAMETER Id
       Remove one computer’s inventory by id

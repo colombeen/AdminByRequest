@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Retrieve a list of approval requests
 
@@ -38,7 +38,6 @@
     .EXAMPLE
       PS C:\> Get-ABRRequest -Status Denied -WantScanDetails
       Get all the requests that were denied with scan details
-
 #>
 Function Get-ABRRequest
 {

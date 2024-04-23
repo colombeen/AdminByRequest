@@ -1,4 +1,4 @@
-#region Variables
+﻿#region Variables
 New-Variable -Scope Script -Visibility Private -Force -Name 'ABR_API_Key' -Value $null
 New-Variable -Scope Script -Visibility Private -Force -Name 'ABR_API_URL' -Value $null
 New-Variable -Scope Script -Visibility Private -Force -Name 'ABR_API_User' -Value $null

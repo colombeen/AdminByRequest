@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Remove connection information from the ABR config
 
@@ -14,6 +14,7 @@
 #>
 Function Remove-ABRConfig
 {
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingConvertToSecureStringWithPlainText', '')]
   [CmdletBinding(ConfirmImpact = 'High', SupportsShouldProcess = $true)]
   Param
   (

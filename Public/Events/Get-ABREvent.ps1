@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Retrieve a list of events
 

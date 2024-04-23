@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
       Shows details about your tenant on Admin by Request
 
@@ -8,7 +8,6 @@
     .EXAMPLE
       PS C:\> Get-ABRWhoAmI
       Shows details about your tenant on Admin by Request
-
 #>
 Function Get-ABRWhoAmI
 {
