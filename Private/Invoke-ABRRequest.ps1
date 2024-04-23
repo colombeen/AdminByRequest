@@ -17,6 +17,9 @@
     .PARAMETER Headers
       The headers required to authenticate, enrich or filter the query
 
+    .PARAMETER Timeout
+      The timeout setting for retrieving data from the API
+
     .EXAMPLE
       PS C:\> Invoke-ABRRequest -URI '/requests' -Method 'Get' -Headers @{ status = 'Denied' }
 #>
@@ -43,7 +46,12 @@ Function Invoke-ABRRequest
     [Parameter(ValueFromPipelineByPropertyName = $true, Position = 3)]
     [ValidateNotNullOrEmpty()]
     [hashtable]
-    $Headers
+    $Headers,
+
+    [Parameter(ValueFromPipelineByPropertyName = $true, Position = 4)]
+    [ValidateNotNullOrEmpty()]
+    [int32]
+    $Timeout = 0
   )
 
   Process
@@ -77,7 +85,7 @@ Function Invoke-ABRRequest
     $ABR_InvokeRestMethod_Splat = @{
       Method     = $Method
       Headers    = $Headers
-      TimeoutSec = 60
+      TimeoutSec = $Timeout
       URI        = $Script:ABR_API_URL + $URI
     }
     #endregion
