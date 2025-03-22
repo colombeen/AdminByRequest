@@ -10,7 +10,7 @@
   RootModule           = 'AdminByRequest.psm1'
 
   # Version number of this module.
-  ModuleVersion        = '1.3.1'
+  ModuleVersion        = '1.3.2'
 
   # Supported PSEditions
   CompatiblePSEditions = @('Desktop', 'Core')
@@ -119,6 +119,9 @@
 
       # ReleaseNotes of this module
       ReleaseNotes = '
+v1.3.2 - Update event code list
+    - Update the list with event codes and text
+
 v1.3.1 - Change request timeout
     - Update private function Invoke-ABRRequest
 

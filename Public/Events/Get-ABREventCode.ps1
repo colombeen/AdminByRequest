@@ -101,6 +101,29 @@ Function Get-ABREventCode
       124;Execution of file blocked by lack of ownership
       130;Admin Session denied by lack of Intune compliance
       131;Execution of file blocked by lack of Intune compliance
+      140;Remote desktop account revoke issued
+      141;Remote desktop group revoke issued
+      142;Remote desktop account revoke cancelled
+      143;Remote desktop group revoke cancelled
+      144;Remote desktop account restore issued
+      145;Remote desktop group restore issued
+      146;Remote desktop account restore cancelled
+      147;Remote desktop group restore cancelled
+      150;User removed from remote desktop users
+      151;Group removed from remote desktop users
+      152;User restored to remote desktop users
+      153;Group restored to remote desktop users
+      160;Local administrator account addition issued
+      161;Local administrator group addition issued
+      162;Local administrator account addition cancelled
+      163;Local administrator group addition cancelled
+      170;Remote desktop account addition issued
+      171;Remote desktop group addition issued
+      172;Remote desktop account addition cancelled
+      173;Remote desktop group addition cancelled
+      180;Rotating admin account created
+      181;Rotating admin account removed
+      182;Rotating admin account logged on
 '@ | ConvertFrom-Csv -Delimiter ';'
   }
 
